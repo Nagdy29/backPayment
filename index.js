@@ -10,7 +10,7 @@ import payRouter from "./src/payRoutes.js";
 
 const app = express();
 app.use(cors());
-const port = 4000;
+const port = 4000 || process.env.PORT;
 ///////////////////////
 app.use(express.json());
 //////////////
@@ -18,7 +18,6 @@ app.use("/cash", payRouter);
 
 dbConnection();
 ///////////////////////
-// handel router علشان url
 
 app.get("/", (req, res) => res.send("welcome"));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
