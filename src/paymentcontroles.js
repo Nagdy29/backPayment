@@ -3,7 +3,7 @@ import { paymentModel } from "../database/modules/payment.module.js";
 const allUser = async (req, res) => {
   try {
     const payment = await paymentModel.find({});
-    res.json({ success: true });
+    res.json({ success: true, payment });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "errorrrr" });
@@ -38,4 +38,17 @@ const addUserPay = async (req, res) => {
     res.json({ success: false, message: "error" });
   }
 };
-export { addUserPay, allUser, removeUser };
+const getuser = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const emailExists = await paymentModel.findOne({ email });
+    if (emailExists) {
+      return res.json({ message: "eamil is exists" });
+    }
+  } catch (error) {
+    res.json({ message: "Erroe" });
+  }
+  res.json({ sucess: true, message: "app sucess " });
+};
+export { addUserPay, allUser, removeUser, getuser };
