@@ -11,6 +11,6 @@ const payRouter = express.Router();
 payRouter.post("/add", addUserPay);
 payRouter.get("/list", allUser);
 payRouter.post("/remove", removeUser);
-postRouter.get("/:email", getuser);
+payRouter.get("/:email", getuser);
 
 export default payRouter;
