@@ -1,0 +1,36 @@
+// process دي علشان تهندل اي ايرور من الكتابه ف الكود ففسها منك
+process.on("uncaughtException", (err) => {
+  console.log("errr", err);
+});
+import express from "express";
+import cors from "cors";
+import { dbConnection } from "./database/dbConation.js";
+import { appErorr } from "./src/utilis/appError.js";
+import payRouter from "./src/payRoutes.js";
+
+const app = express();
+app.use(cors());
+const port = 4000;
+///////////////////////
+app.use(express.json());
+//////////////
+app.use("/cash", payRouter);
+
+dbConnection();
+///////////////////////
+// handel router علشان url
+app.use("*", (req, res, next) => {
+  //
+  next(new appErorr("Not Found " + req.originalUrl, 404));
+});
+// GLOBAL ERROR
+app.use((err, req, res, next) => {
+  let code = err.statusCode || 500;
+  res.status(code).json({ message: err.message, statusCode: code });
+});
+app.get("/", (req, res) => res.send("welcome"));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+process.on("unhandledRejection", (err) => {
+  console.log("erorr", err);
+});
