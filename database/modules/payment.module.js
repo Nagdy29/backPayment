@@ -10,6 +10,11 @@ const paymentSchema = mongoose.Schema({
     require: true,
     unique: true,
   },
+  courseName: {
+    type: String,
+    require: true,
+    unique: true,
+  },
   Username: {
     type: String,
     require: true,

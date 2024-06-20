@@ -29,6 +29,7 @@ const addUserPay = async (req, res) => {
     Total: req.body.Total,
     Address: req.body.Address,
     Email: req.body.Email,
+    courseName: req.body.courseName,
   });
   try {
     await userpay.save();
