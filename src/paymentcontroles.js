@@ -3,7 +3,7 @@ import { paymentModel } from "../database/modules/payment.module.js";
 const allUser = async (req, res) => {
   try {
     const payment = await paymentModel.find({});
-    res.json({ success: true, payment });
+    res.json({ success: true, data: payment });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "errorrrr" });

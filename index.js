@@ -5,7 +5,6 @@ process.on("uncaughtException", (err) => {
 import express from "express";
 import cors from "cors";
 import { dbConnection } from "./database/dbConation.js";
-import { appErorr } from "./src/utilis/appError.js";
 import payRouter from "./src/payRoutes.js";
 
 const app = express();
