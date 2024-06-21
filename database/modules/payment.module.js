@@ -1,30 +1,26 @@
 import mongoose from "mongoose";
 // الجدول بناع اليوسر علشان تسجيل البيانات
 const paymentSchema = mongoose.Schema({
-  FirstName: {
+  name: {
     type: String,
     require: true,
   },
-  LastName: {
-    type: String,
-    require: true,
-    unique: true,
-  },
+
   courseName: {
     type: String,
     require: true,
     unique: true,
   },
-  Username: {
+  sn_id: {
     type: String,
     require: true,
   },
-  Email: {
+  email: {
     type: String,
 
     require: true,
   },
-  Total: {
+  courseprice: {
     type: Number,
     require: true,
   },
