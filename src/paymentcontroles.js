@@ -23,13 +23,13 @@ const removeUser = async (req, res) => {
 };
 const addUserPay = async (req, res) => {
   const userpay = new paymentModel({
-    FirstName: req.body.FirstName,
-    LastName: req.body.LastName,
-    Username: req.body.Username,
-    Total: req.body.Total,
-    Address: req.body.Address,
-    Email: req.body.Email,
+    name: req.body.name,
+
     courseName: req.body.courseName,
+    courseprice: req.body.courseprice,
+    Address: req.body.Address,
+    email: req.body.email,
+    sn_id: req.body.sn_id,
   });
   try {
     await userpay.save();
