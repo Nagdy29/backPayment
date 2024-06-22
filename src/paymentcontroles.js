@@ -24,7 +24,6 @@ const removeUser = async (req, res) => {
 const addUserPay = async (req, res) => {
   const userpay = new paymentModel({
     name: req.body.name,
-
     courseName: req.body.courseName,
     courseprice: req.body.courseprice,
     Address: req.body.Address,

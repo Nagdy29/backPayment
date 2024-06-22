@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export const dbConnection = () => {
   mongoose
     .connect(
-      "mongodb+srv://payment:payment@cluster0.0xbwgr8.mongodb.net/payment"
+      "mongodb+srv://payment:payment@cluster0.thto9he.mongodb.net/paymennt"
     )
     .then(() => {
       console.log("db Connection");
