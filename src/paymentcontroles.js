@@ -22,9 +22,6 @@ const removeUser = async (req, res) => {
   }
 };
 const addUserPay = async (req, res) => {
-  let user = await paymentModel.findOne({ email });
-
-  if (user) return res.json({ message: "email already in use" });
   const userpay = new paymentModel({
     name: req.body.name,
     courseName: req.body.courseName,
