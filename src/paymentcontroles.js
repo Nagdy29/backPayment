@@ -3,10 +3,10 @@ import { paymentModel } from "../database/modules/payment.module.js";
 const allUser = async (req, res) => {
   try {
     const payment = await paymentModel.find({});
-    res.json({ success: true, data: payment });
+    res.json({ sucess: true, data: payment });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "errorrrr" });
+    res.json({ message: "errorrrr" });
   }
 };
 
@@ -15,13 +15,16 @@ const removeUser = async (req, res) => {
     const payment = await paymentModel.findById(req.body.email);
 
     await paymentModel.findByIdAndDelete(req.body.email);
-    res.json({ success: true, message: "remove " });
+    res.json({ sucess: true, message: "remove " });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "error" });
+    res.json({ message: "error" });
   }
 };
 const addUserPay = async (req, res) => {
+  let user = await paymentModel.findOne({ email });
+
+  if (user) return res.json({ message: "email already in use" });
   const userpay = new paymentModel({
     name: req.body.name,
     courseName: req.body.courseName,
@@ -32,10 +35,10 @@ const addUserPay = async (req, res) => {
   });
   try {
     await userpay.save();
-    res.json({ success: true, message: "user add" });
+    res.json({ sucess: true, message: "user add" });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "error" });
+    res.json({ message: "error" });
   }
 };
 const getuser = async (req, res) => {
